@@ -123,6 +123,8 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'log' => 'error_log',
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
