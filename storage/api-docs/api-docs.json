@@ -1,0 +1,342 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Melp REST-aurant API",
+        "description": "REST-aurant API description",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/": {},
+        "/restaurants/": {
+            "get": {
+                "tags": [
+                    "Restaurants"
+                ],
+                "summary": "Get list of restaurants",
+                "description": "Returns list of restaurants",
+                "operationId": "getReataurantsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Restaurant"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Restaurants"
+                ],
+                "summary": "Edit existing restaurant",
+                "operationId": "editRestaurant",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/Restaurant"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Restaurant not found"
+                    },
+                    "200": {
+                        "description": "Restaurant edited",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Restaurant"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Restaurants"
+                ],
+                "summary": "Add a new restaurant to the store",
+                "operationId": "storeRestaurant",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/Restaurant"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Restaurant"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/restaurants/{restaurant_id}": {
+            "get": {
+                "tags": [
+                    "Restaurants"
+                ],
+                "summary": "Read existing restaurant",
+                "operationId": "readRestaurant",
+                "parameters": [
+                    {
+                        "name": "restaurant_id",
+                        "in": "path",
+                        "description": "Restaurant id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Restaurant not found"
+                    },
+                    "200": {
+                        "description": "Restaurant found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Restaurant"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Restaurants"
+                ],
+                "summary": "Edit existing restaurant",
+                "operationId": "deleteRestaurant",
+                "parameters": [
+                    {
+                        "name": "restaurant_id",
+                        "in": "path",
+                        "description": "Restaurant id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Restaurant not found"
+                    },
+                    "200": {
+                        "description": "Restaurant deleted"
+                    }
+                }
+            }
+        },
+        "/restaurants/statistics?latitude={latitude}&longitude={longitude}&radius={radius}": {
+            "get": {
+                "tags": [
+                    "Restaurants/Statistics"
+                ],
+                "summary": "Read existing restaurant",
+                "operationId": "readRestaurant",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "latitude",
+                        "required": true,
+                        "example": 19.436070591035
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "longitude",
+                        "required": true,
+                        "example": -99.129786573199
+                    },
+                    {
+                        "name": "radius",
+                        "in": "query",
+                        "description": "radius",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 200
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Restaurant not found"
+                    },
+                    "200": {
+                        "description": "Restaurant Statistics within radius",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "description": "Read existing restaurant",
+                                            "type": "integer",
+                                            "example": "6"
+                                        },
+                                        "avg": {
+                                            "description": "Read existing restaurant",
+                                            "type": "float",
+                                            "example": "2.5"
+                                        },
+                                        "std": {
+                                            "description": "Read existing restaurant",
+                                            "type": "float",
+                                            "example": "1.5"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Restaurant": {
+                "title": "Restaurant",
+                "description": "Restaurant model",
+                "required": [
+                    "rating",
+                    "name",
+                    "site",
+                    "email"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "string",
+                        "format": "string36",
+                        "example": "851f799f-0852-439e-b9b2-df92c43e7672"
+                    },
+                    "rating": {
+                        "title": "rating",
+                        "description": "Restaurant rating (int, 0 to 4)",
+                        "type": "integer",
+                        "example": 3
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Name of the new restaurant",
+                        "type": "string",
+                        "example": "Fisher's"
+                    },
+                    "site": {
+                        "title": "site",
+                        "description": "Restaurant website URL",
+                        "type": "string",
+                        "example": "https://www.fishers.com.mx"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Restaurant contact email",
+                        "type": "string",
+                        "example": "example@fishers.com.mx"
+                    },
+                    "phone": {
+                        "title": "phone",
+                        "description": "Restaurant phone number",
+                        "type": "string",
+                        "example": "5552060416"
+                    },
+                    "street": {
+                        "title": "street",
+                        "description": "Restaurant street address",
+                        "type": "string",
+                        "example": "Palmas Hills Mz. II"
+                    },
+                    "city": {
+                        "title": "city",
+                        "description": "Restaurant city address",
+                        "type": "string",
+                        "example": "Huixquilucan"
+                    },
+                    "state": {
+                        "title": "state",
+                        "description": "Restaurant state address",
+                        "type": "string",
+                        "example": "Estado de México"
+                    },
+                    "lat": {
+                        "title": "lat",
+                        "description": "Restaurant latitude coordinate (float, -90 to 90)",
+                        "type": "number",
+                        "format": "float",
+                        "example": 19.3930193
+                    },
+                    "lng": {
+                        "title": "ln",
+                        "description": "Restaurant longitude coordinate (float, -180 to 180)",
+                        "type": "number",
+                        "format": "float",
+                        "example": -99.2807104
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Restaurant"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Projects",
+            "description": "API Endpoints of Projects"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
