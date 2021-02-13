@@ -82,7 +82,7 @@ return [
             /*
              * Edit to set the api's base path
             */
-            'base' => env('L5_SWAGGER_BASE_PATH', null),
+            'base' => env('L5_SWAGGER_BASE_PATH', '/api/documentation'),
 
             /*
              * Edit to set path where swagger ui assets should be stored
