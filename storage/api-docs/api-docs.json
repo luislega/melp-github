@@ -16,6 +16,9 @@
         {
             "url": "http://localhost:8000/api/",
             "description": "Demo API Server"
+        },
+        {
+            "url": "/api/documentation"
         }
     ],
     "paths": {
@@ -123,11 +126,12 @@
                     {
                         "name": "restaurant_id",
                         "in": "path",
-                        "description": "Restaurant id",
+                        "description": "Restaurant id (string32)",
                         "required": true,
                         "schema": {
-                            "type": "integer"
-                        }
+                            "type": "string"
+                        },
+                        "example": "6b7cd221-7859-4ece-8ed6-fd79283f0e65"
                     }
                 ],
                 "responses": {
