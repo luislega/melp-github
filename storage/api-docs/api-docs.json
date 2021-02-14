@@ -252,10 +252,17 @@
                 "title": "Restaurant",
                 "description": "Restaurant model",
                 "required": [
+                    "id",
                     "rating",
                     "name",
                     "site",
-                    "email"
+                    "phone",
+                    "email",
+                    "street",
+                    "city",
+                    "state",
+                    "lat",
+                    "lng"
                 ],
                 "properties": {
                     "id": {

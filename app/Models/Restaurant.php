@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @OA\Schema(
  *     title="Restaurant",
  *     description="Restaurant model",
- *     required={"rating","name","site","email"},
+ *     required={"id","rating","name","site","phone","email","street","city","state","lat","lng"},
  *     @OA\Xml(
  *         name="Restaurant"
  *     )
