@@ -154,17 +154,18 @@
                 "tags": [
                     "Restaurants"
                 ],
-                "summary": "Edit existing restaurant",
+                "summary": "Delete existing restaurant",
                 "operationId": "deleteRestaurant",
                 "parameters": [
                     {
                         "name": "restaurant_id",
                         "in": "path",
-                        "description": "Restaurant id",
+                        "description": "Restaurant id (string32)",
                         "required": true,
                         "schema": {
-                            "type": "integer"
-                        }
+                            "type": "string"
+                        },
+                        "example": "6b7cd221-7859-4ece-8ed6-fd79283f0e65"
                     }
                 ],
                 "responses": {

@@ -211,7 +211,7 @@ class RestaurantController extends Controller
     }
 
     /**
-     * Edit existing restaurant
+     * Delete existing restaurant
      *
      * @OA\Delete(
      *     path="/restaurants/{restaurant_id}",
@@ -219,12 +219,13 @@ class RestaurantController extends Controller
      *     operationId="deleteRestaurant",
      *     @OA\Parameter(
      *         name="restaurant_id",
-     *         description="Restaurant id",
+     *         description="Restaurant id (string32)",
      *         required=true,
      *         in="path",
      *         @OA\Schema(
-     *             type="integer"
-     *         )
+     *             type="string"
+     *         ),
+     *         example="6b7cd221-7859-4ece-8ed6-fd79283f0e65"
      *     ),
      *     @OA\Response(
      *         response=404,
