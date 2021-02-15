@@ -255,7 +255,6 @@
                 "title": "Restaurant",
                 "description": "Restaurant model",
                 "required": [
-                    "id",
                     "rating",
                     "name",
                     "site",

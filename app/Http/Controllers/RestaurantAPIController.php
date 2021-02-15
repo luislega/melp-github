@@ -147,7 +147,7 @@ class RestaurantAPIController extends Controller
         $restaurant['id'] = $restaurant_id;
         $restaurant->save();
 
-        return response()->json($restaurant,201)->header('Location',url('/api/restaurants/'.$restaurant_id));
+        return response()->json($restaurant,201)/*->header('Location',url('/api/restaurants/'.$restaurant_id))*/;
     }
 
     private function generateRestaurantId($id)
