@@ -24,15 +24,15 @@ class Controller
      *      url="http://melp-luislega.herokuapp.com/api/",
      *      description="Demo API Server"
      * )
-
+     *
+     * @OA\Server(
+     *      url="http://localhost:8000/api/",
+     *      description="Demo API Server"
+     * )
      *
      * @OA\Tag(
      *     name="Projects",
      *     description="API Endpoints of Projects"
-     * )
-     *
-     * @OA\PathItem(
-     *     path="/"
      * )
      */
 }
