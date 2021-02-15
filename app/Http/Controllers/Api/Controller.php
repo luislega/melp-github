@@ -21,7 +21,7 @@ class Controller
      * )
      *
      * @OA\Server(
-     *      url="http://localhost:8000/api/",
+     *      url="http://melp-luislega.herokuapp.com/api/",
      *      description="Demo API Server"
      * )
 
