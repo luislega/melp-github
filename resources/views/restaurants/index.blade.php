@@ -16,8 +16,8 @@
         body {
             font-family: 'Nunito';
         }
-        h2 {
-            margin-left: 10px;
+        button {
+            margin: 0 0 10px 10px;
         }
         table#restaurants-table {
             width: calc(100% - 20px);
@@ -64,7 +64,7 @@
 </header>
 
 <div>
-    <h2 class="padded-left clickable" onclick="showForm()">Create restaurant</h2>
+    <button class="padded-left clickable" onclick="showForm()">Add restaurant</button>
     <p id="created" class="padded-left success hidden">CREATED!</p>
 </div>
 
@@ -73,47 +73,47 @@
         <table id="create-table">
             <tbody><tr>
                 <td>rating</td>
-                <td class="input-cell"><input class="resetable" type="text" name="rating" value="1"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="rating"></td>
             </tr>
             <tr>
                 <td>name</td>
-                <td class="input-cell"><input class="resetable" type="text" name="name" value="Báez, Karan and Armijo"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="name" ></td>
             </tr>
             <tr>
                 <td>site</td>
-                <td class="input-cell"><input class="resetable" type="text" name="site" value="https://fernando.info"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="site" ></td>
             </tr>
             <tr>
                 <td>email</td>
-                <td class="input-cell"><input class="resetable" type="text" name="email" value="Alexa.Ortega@yahoo.com"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="email" ></td>
             </tr>
             <tr>
                 <td>phone</td>
-                <td class="input-cell"><input class="resetable" type="text" name="phone" value="545520700"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="phone" ></td>
             </tr>
             <tr>
                 <td>street</td>
-                <td class="input-cell"><input class="resetable" type="text" name="street" value="08030 Juan Manuel Torrente"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="street" ></td>
             </tr>
             <tr>
                 <td>city</td>
-                <td class="input-cell"><input class="resetable" type="text" name="city" value="Uruapan del Progreso"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="city" ></td>
             </tr>
             <tr>
                 <td>state</td>
-                <td class="input-cell"><input class="resetable" type="text" name="state" value="Juan Pabloland Tabasco"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="state" ></td>
             </tr>
             <tr>
                 <td>lat</td>
-                <td class="input-cell"><input class="resetable" type="text" name="lat" value="19.433699568941"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="lat" ></td>
             </tr>
             <tr>
                 <td>lng</td>
-                <td class="input-cell"><input class="resetable" type="text" name="lng" value="-99.131092111865"></td>
+                <td class="input-cell"><input class="resetable" type="text" name="lng" ></td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit" value="Create">
+                    <input type="submit" value="Add">
                 </td>
             </tr>
             </tbody></table>
