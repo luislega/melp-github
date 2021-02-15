@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
-class RestaurantController extends Controller
+class RestaurantAPIController extends Controller
 {
     public function validateRestaurant(Request $request, $required=[], $check_unique_id=false): Array
     {
@@ -20,12 +20,12 @@ class RestaurantController extends Controller
             'id'=>($check_unique_id?'unique:App\Models\Restaurant|':'').'string|size:36',
             'rating'=>'integer|min:0|max:4',
             'name'=>'string|max:255',
-            'site'=>'url',
-            'email'=>'email',
-            'phone'=>'nullable|string',
-            'street'=>'nullable|string',
-            'city'=>'nullable|string',
-            'state'=>'nullable|string',
+            'site'=>'url|max:255',
+            'email'=>'email|max:255',
+            'phone'=>'nullable|string|max:255',
+            'street'=>'nullable|string|max:255',
+            'city'=>'nullable|string|max:255',
+            'state'=>'nullable|string|max:255',
             'lat'=>'numeric|min:-90|max:90',
             'lng'=>'numeric|min:-180|max:180',
         ];
@@ -64,9 +64,14 @@ class RestaurantController extends Controller
      *      )
      *     )
      */
-    public function index(Request $request): JsonResponse
+    public function index(): JsonResponse
     {
-        return response()->json([Restaurant::get()],200);
+        return response()->json(Restaurant::orderBy('name')->get(),200);
+    }
+
+    public function paginatedIndex(Request $request)
+    {
+        return Restaurant::orderBy('name')->paginate($request->page_size??20);
     }
 
     /**

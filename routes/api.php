@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\RestaurantAPIController;
 use \App\Http\Controllers\RestaurantsImportController;
 
 /*
@@ -27,19 +27,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });*/
 
 Route::prefix('restaurants')->group(function(){
-    Route::get('/statistics',[RestaurantController::class,'getRestaurantsWithinRadius']);
+    Route::get('/statistics',[RestaurantAPIController::class,'getRestaurantsWithinRadius']);
     /*INDEX*/
-    Route::get('/',[RestaurantController::class,'index']);
+    Route::get('/',[RestaurantAPIController::class,'index']);
     /*IMPORT*/
     Route::get('/import',[RestaurantsImportController::class,'import']);
     /*CREATE*/
-    Route::post('/', [RestaurantController::class,'storeRestaurant']);
+    Route::post('/', [RestaurantAPIController::class,'storeRestaurant']);
     /*READ*/
-    Route::get('/{restaurant}', [RestaurantController::class,'readRestaurant']);
+    Route::get('/{restaurant}', [RestaurantAPIController::class,'readRestaurant']);
     /*UPDATE*/
-    Route::put('/', [RestaurantController::class,'editRestaurant']);
+    Route::put('/', [RestaurantAPIController::class,'editRestaurant']);
     /*DELETE*/
-    Route::delete('/{restaurant_id}',[RestaurantController::class, 'deleteRestaurant']);
+    Route::delete('/{restaurant_id}',[RestaurantAPIController::class, 'deleteRestaurant']);
 });
 
 
